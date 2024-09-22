@@ -3,9 +3,8 @@ import { InputField } from "./InputField"
 import { useState } from "react"
 import {SignInInput} from "@chiragkottary/medium-common"
 import { AuthHeader } from "./AuthHeader"
-import axios from 'axios'
-import { BACKEND_URL } from "../config"
 import { useNavigate } from "react-router-dom"
+import axios from "axios"
 
 
 export const AuthSignIn = ()=>{
@@ -19,7 +18,7 @@ export const AuthSignIn = ()=>{
     
     const SubmitSignIn =async ()=>{
         try {
-        const response = await axios.post(`${BACKEND_URL}/api/v1/user/signin`,postInputs)
+        const response = await axios.post(`${process.env.BACKEND_URL}/api/v1/user/signin`,postInputs)
         const jwt = response.data
         localStorage.setItem("token", jwt.token);
         localStorage.setItem("name", jwt.name);
