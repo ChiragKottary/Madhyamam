@@ -5,6 +5,7 @@ import { AuthHeader } from "./AuthHeader"
 import { useNavigate } from "react-router-dom"
 import { ToastContainer, toast } from 'react-toastify';
 import axios from "axios"
+import { BACKEND_URL } from "../config"
 
 export const AuthSignUp = ()=>{
          const [postInputs,setPostInputs] = useState< SignUpInput>({
@@ -19,7 +20,7 @@ export const AuthSignUp = ()=>{
    
     const SubmitSignUp =async ()=>{
         try {
-        const response = await axios.post(`${process.env.BACKEND_URL}/api/v1/user/signup`,postInputs)
+        const response = await axios.post(`${BACKEND_URL}/api/v1/user/signup`,postInputs)
         const token = response.data.id;
         const name = response.data.user;
         localStorage.setItem("token", token);

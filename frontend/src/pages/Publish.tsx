@@ -3,6 +3,7 @@ import { AppBar } from "../components/AppBar"
 import {CreateBlog} from '@chiragkottary/medium-common'
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import { BACKEND_URL } from "../config"
 
 export const Publish=()=>{
     const [createPost,setCreatePost] = useState<CreateBlog>({
@@ -38,7 +39,7 @@ export const Publish=()=>{
         <div className="flex items-center justify-between px-3 py-2 border-t dark:border-gray-600">
            <button type="submit" onClick={async ()=>{
             try {
-            const response =await axios.post(`${process.env.BACKEND_URL}/api/v1/book/upload`,createPost,{
+            const response =await axios.post(`${BACKEND_URL}/api/v1/book/upload`,createPost,{
             headers: {
             "Authorization": localStorage.getItem("token")
             }});
